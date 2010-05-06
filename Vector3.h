@@ -40,7 +40,14 @@ namespace ShadeKit {
         }
         
         float dot(Vector3 &v) const { return m_x * v.x() + m_y * v.y() + m_z * v.z(); }
+        float dot(Vector3 v) const { return m_x * v.x() + m_y * v.y() + m_z * v.z(); }
         Vector3 cross(Vector3 &v) const
+        {
+            return Vector3(m_y * v.z() - m_z * v.y(),
+                           m_z * v.x() - m_x * v.z(),
+                           m_x * v.y() - m_y * v.x());
+        }
+        Vector3 cross(Vector3 v) const
         {
             return Vector3(m_y * v.z() - m_z * v.y(),
                            m_z * v.x() - m_x * v.z(),
