@@ -61,6 +61,16 @@ namespace ShadeKit {
     }
     
     std::ostream& operator<<(std::ostream& out, const Color& a);
+    
+    const Color kColorBlack   = Color(0.0f, 0.0f, 0.0f);
+    const Color kColorGray    = Color(0.5f, 0.5f, 0.5f);
+    const Color kColorWhite   = Color(1.0f, 1.0f, 1.0f);
+    const Color kColorRed     = Color(1.0f, 0.0f, 0.0f);
+    const Color kColorGreen   = Color(0.0f, 1.0f, 0.0f);
+    const Color kColorBlue    = Color(0.0f, 0.0f, 1.0f);
+    const Color kColorCyan    = Color(0.0f, 1.0f, 1.0f);
+    const Color kColorYellow  = Color(1.0f, 1.0f, 0.0f);
+    const Color kColorMagenta = Color(1.0f, 0.0f, 1.0f);
 }
 
 #endif
