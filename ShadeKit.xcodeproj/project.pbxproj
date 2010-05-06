@@ -37,6 +37,7 @@
 		C31B5AB11192C024003A3829 /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
 		C31B5B061192C75B003A3829 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		C31B5B071192C75B003A3829 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
+		C31B5B5F1192CF1F003A3829 /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
 		C3DB8866119297A400405B66 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		C3DB8867119297A400405B66 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* ShadeKit.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ShadeKit.1; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 				C31B5AB11192C024003A3829 /* Ray.cpp */,
 				C31B5B061192C75B003A3829 /* Image.h */,
 				C31B5B071192C75B003A3829 /* Image.cpp */,
+				C31B5B5F1192CF1F003A3829 /* Surface.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";

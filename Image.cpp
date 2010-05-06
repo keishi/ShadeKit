@@ -12,6 +12,18 @@
 #include <fstream>
 
 namespace ShadeKit {
+    Image::Image(unsigned int width, unsigned int height) 
+    : m_width(width)
+    , m_height(height)
+    {
+        m_pixels = new Pixel[pixelCount()];
+    }
+    
+    Image::~Image()
+    {
+        if (m_pixels)
+            delete [] m_pixels;
+    }
     
     void Image::writeBMPFile(const char *filename)
     {
