@@ -14,6 +14,7 @@
 
 namespace ShadeKit {
     class Material {
+    public:
         Material();
         
         const Color& color() const { return m_color; }

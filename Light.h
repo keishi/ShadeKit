@@ -21,7 +21,13 @@ namespace ShadeKit {
     } LightAttenuation;
     class Light {
     public:
-        Light() : m_intensity(1.0f), m_attenuation(PKLightAttenuationNone) { }
+        Light(Vector3& pos) : m_position(pos), m_color(kColorWhite), m_intensity(1.0f), m_attenuation(PKLightAttenuationNone) { }
+        
+        const Vector3& position() const { return m_position; }
+        const Color& color() const { return m_color; }
+        const float intensity() const { return m_intensity; }
+        const LightAttenuation attenuation() const { return m_attenuation; }
+        
     private:
         Vector3 m_position;
         Color m_color;

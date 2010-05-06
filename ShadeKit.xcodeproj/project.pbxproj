@@ -17,6 +17,7 @@
 		C31B5C7D1192E0D7003A3829 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5C7C1192E0D7003A3829 /* Material.cpp */; };
 		C31B5CCF1192F06A003A3829 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5CCE1192F06A003A3829 /* Light.cpp */; };
 		C31B5CD81192F187003A3829 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5CD71192F187003A3829 /* Scene.cpp */; };
+		C31B5CF21192F3A3003A3829 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5CF11192F3A3003A3829 /* Camera.cpp */; };
 		C3DB8868119297A400405B66 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8867119297A400405B66 /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		C31B5CCE1192F06A003A3829 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
 		C31B5CD61192F187003A3829 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		C31B5CD71192F187003A3829 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		C31B5CF01192F3A3003A3829 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		C31B5CF11192F3A3003A3829 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		C3DB8866119297A400405B66 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		C3DB8867119297A400405B66 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* ShadeKit.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ShadeKit.1; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				C31B5CCE1192F06A003A3829 /* Light.cpp */,
 				C31B5CD61192F187003A3829 /* Scene.h */,
 				C31B5CD71192F187003A3829 /* Scene.cpp */,
+				C31B5CF01192F3A3003A3829 /* Camera.h */,
+				C31B5CF11192F3A3003A3829 /* Camera.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				C31B5C7D1192E0D7003A3829 /* Material.cpp in Sources */,
 				C31B5CCF1192F06A003A3829 /* Light.cpp in Sources */,
 				C31B5CD81192F187003A3829 /* Scene.cpp in Sources */,
+				C31B5CF21192F3A3003A3829 /* Camera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

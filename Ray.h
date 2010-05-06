@@ -29,7 +29,7 @@ namespace ShadeKit {
         Vector3 m_direction;
     };
     
-    std::ostream& operator<<(std::ostream& out, const Vector3& a);
+    std::ostream& operator<<(std::ostream& out, const Ray& a);
 }
 
 #endif

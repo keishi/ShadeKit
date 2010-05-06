@@ -14,6 +14,7 @@ namespace ShadeKit {
     namespace Test {
         void testVector3();
         void testImage();
+        void testCamera();
         void runAll();
     }
 }
