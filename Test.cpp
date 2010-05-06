@@ -13,6 +13,7 @@
 #include "Camera.h"
 #include "Sphere.h"
 #include "Plane.h"
+#include "Triangle.h"
 
 #include <cassert>
 
@@ -48,6 +49,20 @@ namespace ShadeKit {
     void Test::testCamera()
     {
         Camera camera(512, 512);
+        
+        Material mirrorMaterial;
+        mirrorMaterial.setColor(kColorBlack);
+        mirrorMaterial.setReflectivity(1.0);
+        Vector3 t0(0, -0.8, 1);
+        Vector3 t1(0.5, -0.8, 0.5);
+        Vector3 t2(0.5, 0.2, 0.5);
+        Vector3 t3(0, 0.2, 1);
+        Triangle mirror0(t0, t1, t2);
+        mirror0.setMaterial(mirrorMaterial);
+        camera.scene().surfaces()->push_back(&mirror0);
+        Triangle mirror1(t2, t3, t0);
+        mirror1.setMaterial(mirrorMaterial);
+        camera.scene().surfaces()->push_back(&mirror1);
         
         Material sphereMaterial;
         sphereMaterial.setColor(kColorRed);
