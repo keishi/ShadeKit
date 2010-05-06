@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* ShadeKit.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* ShadeKit.1 */; };
+		C3DB8868119297A400405B66 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8867119297A400405B66 /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* ShadeKit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShadeKit; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3DB8866119297A400405B66 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		C3DB8867119297A400405B66 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* ShadeKit.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ShadeKit.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
+				C3DB8866119297A400405B66 /* Vector3.h */,
+				C3DB8867119297A400405B66 /* Vector3.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
+				C3DB8868119297A400405B66 /* Vector3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
