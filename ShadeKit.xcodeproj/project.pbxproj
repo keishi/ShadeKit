@@ -10,6 +10,7 @@
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* ShadeKit.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* ShadeKit.1 */; };
 		C31B5A8A1192BA8B003A3829 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5A891192BA8B003A3829 /* Color.cpp */; };
+		C31B5AB21192C024003A3829 /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5AB11192C024003A3829 /* Ray.cpp */; };
 		C3DB8868119297A400405B66 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8867119297A400405B66 /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,8 @@
 		8DD76F6C0486A84900D96B5E /* ShadeKit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShadeKit; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31B5A881192BA8B003A3829 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		C31B5A891192BA8B003A3829 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		C31B5AB01192C024003A3829 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
+		C31B5AB11192C024003A3829 /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
 		C3DB8866119297A400405B66 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		C3DB8867119297A400405B66 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* ShadeKit.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ShadeKit.1; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 				C3DB8867119297A400405B66 /* Vector3.cpp */,
 				C31B5A881192BA8B003A3829 /* Color.h */,
 				C31B5A891192BA8B003A3829 /* Color.cpp */,
+				C31B5AB01192C024003A3829 /* Ray.h */,
+				C31B5AB11192C024003A3829 /* Ray.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
 				C3DB8868119297A400405B66 /* Vector3.cpp in Sources */,
 				C31B5A8A1192BA8B003A3829 /* Color.cpp in Sources */,
+				C31B5AB21192C024003A3829 /* Ray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

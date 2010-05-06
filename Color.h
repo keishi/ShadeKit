@@ -34,8 +34,6 @@ namespace ShadeKit {
                          (m_blue > 1.0) ? 1.0 : (m_blue < 0.0) ? 0.0 : m_blue);
         }
         
-        
-        
     private:
         float m_red;
         float m_green;

@@ -27,9 +27,17 @@ namespace ShadeKit {
         void setX(float x) { m_x = x; }
         void setY(float y) { m_y = y; }
         void setZ(float z) { m_z = z; }
+        void set(Vector3 &v) { m_x = v.x(); m_y = v.y(); m_z = v.z(); }
         
         inline float operator[](int i) const;
-        Vector3 operator- () const { return Vector3(-m_x, -m_y, -m_z); }
+        Vector3 operator-() const { return Vector3(-m_x, -m_y, -m_z); }
+        Vector3& operator=(const Vector3& a)
+        {
+            m_x = a.x();
+            m_y = a.y();
+            m_z = a.z();
+            return *this;
+        }
         
         float dot(Vector3 &v) const { return m_x * v.x() + m_y * v.y() + m_z * v.z(); }
         Vector3 cross(Vector3 &v) const
