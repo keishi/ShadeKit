@@ -16,10 +16,18 @@
 namespace ShadeKit {
     void Test::testVector3()
     {
-        assert(Vector3(2, 3, 4) == Vector3(1, 2, 3) + Vector3(1, 1, 1));
-        assert(Vector3(2, 4, 6) == Vector3(1, 2, 3) * 2);
-        assert(14.0 == Vector3(1, 2, 3).dot(Vector3(1, 2, 3)));
-        assert(Vector3(0, 0, 1) == Vector3(1, 0, 0).cross(Vector3(0, 1, 0)));
+        Vector3 v111(1, 1, 1);
+        Vector3 v123(1, 2, 3);
+        Vector3 v234(2, 3, 4);
+        Vector3 v246(2, 4, 6);
+        Vector3 v100(1, 0, 0);
+        Vector3 v010(0, 1, 0);
+        Vector3 v001(0, 0, 1);
+        
+        assert(v234 == v123 + v111);
+        assert(v246 == v123 * 2);
+        assert(14.0 == v123.dot(v123));
+        assert(v001 == v100.cross(v010));
         printf(":-) PASS %s \n", __func__);
     }
     void Test::testImage()

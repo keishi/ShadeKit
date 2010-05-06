@@ -12,6 +12,8 @@
 
 #include "Ray.h"
 
+const float kNoHit = -1.0;
+
 namespace ShadeKit {
     class Surface {
     public:
