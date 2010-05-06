@@ -57,7 +57,17 @@ namespace ShadeKit {
                 Color c = hitMaterial.color() * lightColor * hitMaterial.diffuse() * shade;
                 *acc = *acc + c;
             }
-            
+            if (m_renderReflection && hitMaterial.reflectivity() > 0.0 && level < kMaxTraceLevel) {
+                float reflection = 2.0 * ray.direction().dot(hitNormal);
+                Vector3 reflectionDirection = (ray.direction() - (hitNormal * reflection)).normalize();
+                Ray reflectedRay;
+                reflectedRay.setOrigin(hitPosition);
+                reflectedRay.setDirection(reflectionDirection);
+                Color reflectedColor = kColorBlack;
+                raytrace(reflectedRay, &reflectedColor, level + 1);
+                reflectedColor = reflectedColor * hitMaterial.reflectivity();
+                *acc = *acc + reflectedColor;
+            }
             
         }
         return hitSurface;
@@ -70,7 +80,8 @@ namespace ShadeKit {
                 Ray viewRay;
                 Vector3 viewRayOrigin(2.0f * x / m_width - 1.0f, 2.0f * y / m_height - 1.0f, 0.0f);
                 viewRay.setOrigin(viewRayOrigin);
-                Vector3 viewRayDirection(0.0f, 0.0f, 1.0f);
+                Vector3 viewRayDirection = (viewRayOrigin - Vector3(0.0, 0.0, -2.0)).normalize();
+
                 viewRay.setDirection(viewRayDirection);
                 
                 Color color;

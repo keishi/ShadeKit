@@ -12,6 +12,7 @@
 #include "Image.h"
 #include "Camera.h"
 #include "Sphere.h"
+#include "Plane.h"
 
 #include <cassert>
 
@@ -48,11 +49,26 @@ namespace ShadeKit {
     {
         Camera camera(128, 128);
         
+        Material sphereMaterial;
+        sphereMaterial.setColor(kColorBlack);
+        sphereMaterial.setReflectivity(0.8);
         Vector3 spherePosition(0.0f, 0.0f, 1.0f);
         Sphere sphere(spherePosition, 0.5f);
+        sphere.setMaterial(sphereMaterial);
         camera.scene().surfaces()->push_back(&sphere);
         
-        Vector3 lightPosition(0.0f, 1.0f, 1.0f);
+        Vector3 planeNormal(0.0f, 0.0f, -1.0f);
+        Plane plane(planeNormal, 2.0f);
+        camera.scene().surfaces()->push_back(&plane);
+        
+        Material floorMaterial;
+        floorMaterial.setColor(kColorBlue);
+        Vector3 floorNormal(0.0f, 1.0f, 0.0f);
+        Plane floor(floorNormal, 1.0f);
+        floor.setMaterial(floorMaterial);
+        camera.scene().surfaces()->push_back(&floor);
+        
+        Vector3 lightPosition(0.0f, 1.0f, 0.0f);
         Light light(lightPosition);
         camera.scene().lights().push_back(&light);
         

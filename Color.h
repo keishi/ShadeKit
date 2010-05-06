@@ -35,6 +35,14 @@ namespace ShadeKit {
                          (m_blue > 1.0) ? 1.0 : (m_blue < 0.0) ? 0.0 : m_blue);
         }
         
+        Color& operator=(const Color& a)
+        {
+            m_red = a.red();
+            m_green = a.green();
+            m_blue = a.blue();
+            return *this;
+        }
+        
     private:
         float m_red;
         float m_green;

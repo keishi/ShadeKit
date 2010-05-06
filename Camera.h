@@ -20,8 +20,8 @@ namespace ShadeKit {
         : m_width(width)
         , m_height(height)
         , m_renderShadow(1)
-        , m_renderReflection(0)
-        , m_renderHighlight(0)
+        , m_renderReflection(1)
+        , m_renderHighlight(1)
         , m_backgroundColor(kColorBlack)
         { }
         

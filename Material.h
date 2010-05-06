@@ -24,10 +24,10 @@ namespace ShadeKit {
         const float shininess() const { return m_shininess; }
         const float reflectivity() const { return m_reflectivity; }
         
-        void setColor(Color& color) { m_color = color; }
-        void setDiffuse(Color& diffuse) { m_diffuse = diffuse; }
-        void setAmbient(Color& ambient) { m_ambient = ambient; }
-        void setSpecular(Color& specular) { m_specular = specular; }
+        void setColor(const Color& color) { m_color = color; }
+        void setDiffuse(const Color& diffuse) { m_diffuse = diffuse; }
+        void setAmbient(const Color& ambient) { m_ambient = ambient; }
+        void setSpecular(const Color& specular) { m_specular = specular; }
         void setShininess(float shininess) { m_shininess = shininess; }
         void setReflectivity(float reflectivity) { m_reflectivity = reflectivity; }
         
