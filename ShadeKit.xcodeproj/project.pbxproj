@@ -15,6 +15,7 @@
 		C31B5B981192D492003A3829 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5B971192D492003A3829 /* Test.cpp */; };
 		C31B5C161192DA1E003A3829 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5C151192DA1E003A3829 /* Sphere.cpp */; };
 		C31B5C7D1192E0D7003A3829 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5C7C1192E0D7003A3829 /* Material.cpp */; };
+		C31B5CCF1192F06A003A3829 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5CCE1192F06A003A3829 /* Light.cpp */; };
 		C3DB8868119297A400405B66 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8867119297A400405B66 /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,8 @@
 		C31B5C151192DA1E003A3829 /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = "<group>"; };
 		C31B5C7B1192E0D7003A3829 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		C31B5C7C1192E0D7003A3829 /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		C31B5CCD1192F06A003A3829 /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Light.h; sourceTree = "<group>"; };
+		C31B5CCE1192F06A003A3829 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
 		C3DB8866119297A400405B66 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		C3DB8867119297A400405B66 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* ShadeKit.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ShadeKit.1; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 				C31B5C151192DA1E003A3829 /* Sphere.cpp */,
 				C31B5C7B1192E0D7003A3829 /* Material.h */,
 				C31B5C7C1192E0D7003A3829 /* Material.cpp */,
+				C31B5CCD1192F06A003A3829 /* Light.h */,
+				C31B5CCE1192F06A003A3829 /* Light.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				C31B5B981192D492003A3829 /* Test.cpp in Sources */,
 				C31B5C161192DA1E003A3829 /* Sphere.cpp in Sources */,
 				C31B5C7D1192E0D7003A3829 /* Material.cpp in Sources */,
+				C31B5CCF1192F06A003A3829 /* Light.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
