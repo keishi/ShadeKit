@@ -35,4 +35,13 @@ namespace ShadeKit {
         }
         return t;
     }
+    std::ostream& operator<<(std::ostream& out, const Sphere& a)
+    {
+        out << "Sphere(center:";
+        out << a.center();
+        out << ", radius:";
+        out << a.radius();
+        out << ")";
+        return out;
+    }
 }

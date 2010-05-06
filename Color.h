@@ -16,6 +16,7 @@ namespace ShadeKit {
     class Color {
     public:
         Color() : m_red(0.0f), m_green(0.0f), m_blue(0.0f) { }
+        Color(float l) : m_red(l), m_green(l), m_blue(l) { }
         Color(float r, float g, float b) : m_red(r), m_green(g), m_blue(b) { }
         
         float red() const { return m_red; }
