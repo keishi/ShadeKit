@@ -43,7 +43,7 @@ namespace ShadeKit {
         float normSq() const { return (m_x * m_x + m_y * m_y + m_z * m_z); }
         Vector3& normalize() 
         {
-            float normInv = 1.0 / norm();
+            float normInv = 1.0f / norm();
             m_x = m_x * normInv;
             m_y = m_y * normInv;
             m_z = m_z * normInv;
@@ -142,7 +142,7 @@ namespace ShadeKit {
     
     inline Vector3 operator/(const Vector3& a, const float m)
     {
-        float mInv = 1.0 / m;
+        float mInv = 1.0f / m;
         return (a * mInv);
     }
     
