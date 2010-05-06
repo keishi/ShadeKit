@@ -28,7 +28,7 @@ namespace ShadeKit {
         void setBlue(float b) { m_blue = b; }
         void setRGB(float r, float g, float b) { m_red = r; m_green = g; m_blue = b; }
         
-        Color clipped()
+        Color clipped() const
         {
             return Color((m_red > 1.0) ? 1.0 : (m_red < 0.0) ? 0.0 : m_red,
                          (m_green > 1.0) ? 1.0 : (m_green < 0.0) ? 0.0 : m_green,

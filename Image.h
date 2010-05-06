@@ -30,7 +30,8 @@ namespace ShadeKit {
         void setPixel(int x, int y, const Pixel& p) { m_pixels[x + y * m_width] = p; }
         void setPixelColor(int x, int y, const Color& c)
         {
-            Pixel p = {c.red()*255, c.green()*255, c.blue()*255};
+            Color d = c.clipped();
+            Pixel p = {d.red() * 255, d.green() * 255, d.blue() * 255};
             m_pixels[x + y * m_width] = p;
         }
         

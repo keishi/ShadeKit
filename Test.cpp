@@ -47,13 +47,15 @@ namespace ShadeKit {
     }
     void Test::testCamera()
     {
-        Camera camera(128, 128);
+        Camera camera(512, 512);
         
         Material sphereMaterial;
-        sphereMaterial.setColor(kColorBlack);
-        sphereMaterial.setReflectivity(0.8);
-        Vector3 spherePosition(0.0f, 0.0f, 1.0f);
-        Sphere sphere(spherePosition, 0.5f);
+        sphereMaterial.setColor(kColorRed);
+        sphereMaterial.setReflectivity(0.2);
+        sphereMaterial.setShininess(3.3);
+        sphereMaterial.setSpecular(kColorWhite);
+        Vector3 spherePosition(-0.5f, -0.6f, 0.7f);
+        Sphere sphere(spherePosition, 0.4f);
         sphere.setMaterial(sphereMaterial);
         camera.scene().surfaces()->push_back(&sphere);
         
@@ -62,13 +64,37 @@ namespace ShadeKit {
         camera.scene().surfaces()->push_back(&plane);
         
         Material floorMaterial;
-        floorMaterial.setColor(kColorBlue);
+        floorMaterial.setColor(kColorBlack);
         Vector3 floorNormal(0.0f, 1.0f, 0.0f);
         Plane floor(floorNormal, 1.0f);
         floor.setMaterial(floorMaterial);
         camera.scene().surfaces()->push_back(&floor);
         
-        Vector3 lightPosition(0.0f, 1.0f, 0.0f);
+        Material ceilingMaterial;
+        ceilingMaterial.setColor(kColorRed);
+        Vector3 ceilingNormal(0.0f, -1.0f, 0.0f);
+        Plane ceiling(ceilingNormal, 1.0f);
+        ceiling.setMaterial(ceilingMaterial);
+        ceiling.setAlternateMaterial(ceilingMaterial);
+        camera.scene().surfaces()->push_back(&ceiling);
+        
+        Material leftWallMaterial;
+        leftWallMaterial.setColor(kColorBlue);
+        Vector3 leftWallNormal(1.0f, 0.0f, 0.0f);
+        Plane leftWall(leftWallNormal, 1.0f);
+        leftWall.setMaterial(leftWallMaterial);
+        leftWall.setAlternateMaterial(leftWallMaterial);
+        camera.scene().surfaces()->push_back(&leftWall);
+        
+        Material rightWallMaterial;
+        rightWallMaterial.setColor(kColorGreen);
+        Vector3 rightWallNormal(-1.0f, 0.0f, 0.0f);
+        Plane rightWall(rightWallNormal, 1.0f);
+        rightWall.setMaterial(rightWallMaterial);
+        rightWall.setAlternateMaterial(rightWallMaterial);
+        camera.scene().surfaces()->push_back(&rightWall);
+        
+        Vector3 lightPosition(0.3f, 0.9f, 0.0f);
         Light light(lightPosition);
         camera.scene().lights().push_back(&light);
         
