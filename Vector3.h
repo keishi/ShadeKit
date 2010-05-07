@@ -57,6 +57,11 @@ namespace ShadeKit {
             m_z = m_z * normInv;
             return *this;
         }
+        Vector3 normalized() const
+        {
+            float normInv = 1.0f / norm();
+            return Vector3(m_x * normInv, m_y * normInv, m_z * normInv);
+        }
         
     private:
         float m_x;

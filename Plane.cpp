@@ -28,7 +28,7 @@ namespace ShadeKit {
         float v = pos.dot(m_vAxis);
         float size = 0.08;
         int uInt = (u < 0 ? u / size : floor(-u / size));
-        int vInt = (v < 0 ? v : -v) / size;
+        int vInt = (v < 0 ? v / size : floor(-v / size));
         return (uInt % 2) ^ (vInt % 2) ? m_material : m_alternateMaterial;
     }
 }

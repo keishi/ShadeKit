@@ -16,6 +16,7 @@
 #include "Triangle.h"
 
 #include <cassert>
+#include <sys/time.h>
 
 namespace ShadeKit {
     void Test::testVector3()
@@ -48,7 +49,12 @@ namespace ShadeKit {
     }
     void Test::testCamera()
     {
-        Camera camera(512, 512);
+        Camera camera(640, 480);
+        camera.setLookat(Vector3(0.0, -1.0, 1.0));
+        camera.setUp(Vector3(0.0, 1.0, 1.0));
+        camera.setEye(Vector3(0.0, 0.0, -1.0));
+        camera.setZNear(0.1);
+        camera.setFOVY(60.0f);
         
         Material mirrorMaterial;
         mirrorMaterial.setColor(kColorBlack);
@@ -113,10 +119,17 @@ namespace ShadeKit {
         Light light(lightPosition);
         camera.scene().lights().push_back(&light);
         
+        struct timeval startTime, endTime;
+        gettimeofday(&startTime, NULL);
         Image image = camera.render();
+        gettimeofday(&endTime, NULL);
+        double elapsed = (endTime.tv_sec - startTime.tv_sec) * 1000000.0 + endTime.tv_usec - startTime.tv_usec;
+        
         image.writeBMPFile("testCamera.bmp");
         
-        printf(":-) PASS %s \n", __func__);
+        
+        
+        printf(":-| DONE %s Render time: %fus\n", __func__, elapsed);
     }
     void Test::runAll()
     {

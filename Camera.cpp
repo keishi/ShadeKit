@@ -10,6 +10,8 @@
 #include "Camera.h"
 
 const int kMaxTraceLevel = 10;
+const float PI = 3.1415926535897932384626433f;
+
 
 namespace ShadeKit {
     Surface *Camera::raytrace(Ray& ray, Color *acc, int level)
@@ -90,11 +92,18 @@ namespace ShadeKit {
         Image image(m_width, m_height);
         for (unsigned int y = 0; y < m_height; y++) {
             for (unsigned int x = 0; x < m_width; x++) {
+                float FOYYRadian = m_FOVY * PI / 180.0f;
+                float viewPortHeight = m_zNear * tanf(FOYYRadian / 2.0f) * 2.0f;
+                float viewPortWidth = viewPortHeight * m_aspect;
+                float xPos = (float)x / (float) m_width - 0.5f;
+                float yPos = (float)y / (float) m_height - 0.5f;
+                Vector3 viewRayV = Vector3(viewPortWidth * xPos, viewPortHeight * yPos, m_zNear);
+                //Vector3 leftDirection = -(m_up.cross(m_lookat).normalize());
+                viewRayV = m_xDirection * viewRayV.x() + m_yDirection * viewRayV.y() + m_zDirection * viewRayV.z();
+                Vector3 viewRayOrigin = viewRayV + m_eye;
                 Ray viewRay;
-                Vector3 viewRayOrigin(2.0f * x / m_width - 1.0f, 2.0f * y / m_height - 1.0f, 0.0f);
                 viewRay.setOrigin(viewRayOrigin);
-                Vector3 viewRayDirection = (viewRayOrigin - Vector3(0.0, 0.0, -3.0)).normalize();
-
+                Vector3 viewRayDirection = viewRayV.normalize();
                 viewRay.setDirection(viewRayDirection);
                 
                 Color color;
