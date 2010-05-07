@@ -1,0 +1,7 @@
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|15|error: expected initializer before ‘.’ token
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|17|error: ‘trans’ was not declared in this scope
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|19|error: declaration of ‘ShadeKit::Matrix4x4& ShadeKit::Matrix4x4::translate(const ShadeKit::Vector3&)’ outside of class is not definition
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|20|error: declaration of ‘ShadeKit::Matrix4x4& ShadeKit::Matrix4x4::scale(float, float, float)’ outside of class is not definition
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|21|error: declaration of ‘ShadeKit::Matrix4x4& ShadeKit::Matrix4x4::scale(const ShadeKit::Vector3&)’ outside of class is not definition
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|22|error: declaration of ‘ShadeKit::Matrix4x4& ShadeKit::Matrix4x4::rotate(float, float, float)’ outside of class is not definition
+/Users/keishi/Dropbox/ShadeKit/Matrix4x4.cpp|23|error: declaration of ‘ShadeKit::Matrix4x4& ShadeKit::Matrix4x4::rotate(const ShadeKit::Vector3&)’ outside of class is not definition
