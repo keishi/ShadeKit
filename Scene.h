@@ -22,6 +22,7 @@ namespace ShadeKit {
         std::vector<Surface*> *surfaces() { return &m_surfaces; };
         
         Surface *findHit(Ray ray, float *distance);
+        void loadCube();
         
     private:
         std::vector<Light*> m_lights;

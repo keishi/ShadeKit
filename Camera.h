@@ -50,6 +50,8 @@ namespace ShadeKit {
             m_yDirection = u.normalized();
             m_xDirection = m_yDirection.cross(m_zDirection).normalize();
         }
+        void setRenderShadow(bool b) { m_renderShadow = b; }
+        void setRenderReflection(bool b) { m_renderReflection = b; }
         
     private:
         unsigned int m_width, m_height;

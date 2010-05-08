@@ -50,12 +50,14 @@ namespace ShadeKit {
     void Test::testCamera()
     {
         Camera camera(640, 480);
-        camera.setLookat(Vector3(0.0, -1.0, 1.0));
-        camera.setUp(Vector3(0.0, 1.0, 1.0));
-        camera.setEye(Vector3(0.0, 0.0, -1.0));
-        camera.setZNear(0.1);
-        camera.setFOVY(60.0f);
-        
+        //camera.setLookat(Vector3(0.0, -0.2, 1.0));
+        //camera.setUp(Vector3(0.0, 1.0, 1.0));
+        //camera.setEye(Vector3(0.0, 0.0, -3.0));
+        //camera.setZNear(3.0);
+        //camera.setFOVY(90.0f);
+        //camera.setRenderShadow(false);
+        //camera.setRenderReflection(false);
+        /*
         Material mirrorMaterial;
         mirrorMaterial.setColor(kColorBlack);
         mirrorMaterial.setReflectivity(1.0);
@@ -69,10 +71,9 @@ namespace ShadeKit {
         Triangle mirror1(t2, t3, t0);
         mirror1.setMaterial(mirrorMaterial);
         camera.scene().surfaces()->push_back(&mirror1);
-        
+        */
         Material sphereMaterial;
         sphereMaterial.setColor(kColorRed);
-        sphereMaterial.setReflectivity(0.2);
         sphereMaterial.setShininess(3.3);
         sphereMaterial.setSpecular(kColorWhite);
         Vector3 spherePosition(-0.5f, -0.6f, 0.7f);
@@ -119,6 +120,8 @@ namespace ShadeKit {
         Light light(lightPosition);
         camera.scene().lights().push_back(&light);
         
+        camera.scene().loadCube();
+        
         struct timeval startTime, endTime;
         gettimeofday(&startTime, NULL);
         Image image = camera.render();
@@ -129,7 +132,7 @@ namespace ShadeKit {
         
         
         
-        printf(":-| DONE %s Render time: %fus\n", __func__, elapsed);
+        printf(":-| DONE %s Render time: %fms\n", __func__, elapsed/1000.0);
     }
     void Test::runAll()
     {

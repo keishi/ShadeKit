@@ -11,7 +11,7 @@
 
 namespace ShadeKit {
     
-    const float kSmallValue = 0.0;
+    const float kSmallValue = -0.000001;
     
     Triangle::Triangle(Vector3& v0, Vector3& v1, Vector3& v2)
     : m_v0(v0)
