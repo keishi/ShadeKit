@@ -14,6 +14,9 @@
 #include <cmath>
 
 namespace ShadeKit {
+    
+    const float PI = 3.1415926535897932384626433f;
+    
     class Vector3 {
     public:
         Vector3() : m_x(0.0f), m_y(0.0f), m_z(0.0f) { }

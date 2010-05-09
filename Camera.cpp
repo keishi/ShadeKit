@@ -10,7 +10,6 @@
 #include "Camera.h"
 
 const int kMaxTraceLevel = 10;
-const float PI = 3.1415926535897932384626433f;
 
 
 namespace ShadeKit {

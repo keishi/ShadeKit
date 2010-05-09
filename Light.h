@@ -15,18 +15,20 @@
 
 namespace ShadeKit {
     typedef enum {
-        PKLightAttenuationNone = 0,
-        PKLightAttenuationLinear = 1,
-        PKLightAttenuationQuadratic = 2
+        LightAttenuationNone = 0,
+        LightAttenuationLinear = 1,
+        LightAttenuationQuadratic = 2
     } LightAttenuation;
     class Light {
     public:
-        Light(Vector3& pos) : m_position(pos), m_color(kColorWhite), m_attenuation(PKLightAttenuationLinear) { }
+        Light(Vector3& pos) : m_position(pos), m_color(kColorWhite), m_attenuation(LightAttenuationLinear) { }
         
         const Vector3& position() const { return m_position; }
         const Color& color() const { return m_color; }
         const LightAttenuation attenuation() const { return m_attenuation; }
-        const float intensityAt(const Vector3& position) const { return 1.0; }
+        virtual const float intensityAt(const Vector3& position) const { return 1.0; }
+        
+        void setPosition(const Vector3 &pos) { m_position = pos; }
         
         void setAttenuation(LightAttenuation attenuation) { m_attenuation = attenuation; }
         

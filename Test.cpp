@@ -14,6 +14,7 @@
 #include "Sphere.h"
 #include "Plane.h"
 #include "Triangle.h"
+#include "SheetLaser.h"
 
 #include <cassert>
 #include <sys/time.h>
@@ -49,7 +50,7 @@ namespace ShadeKit {
     }
     void Test::testCamera()
     {
-        Camera camera(640, 480);
+        Camera camera(320, 240);
         //camera.setLookat(Vector3(0.0, -0.2, 1.0));
         //camera.setUp(Vector3(0.0, 1.0, 1.0));
         //camera.setEye(Vector3(0.0, 0.0, -3.0));
@@ -72,17 +73,18 @@ namespace ShadeKit {
         mirror1.setMaterial(mirrorMaterial);
         camera.scene().surfaces()->push_back(&mirror1);
         */
+        
         Material sphereMaterial;
         sphereMaterial.setColor(kColorRed);
         sphereMaterial.setShininess(3.3);
         sphereMaterial.setSpecular(kColorWhite);
-        Vector3 spherePosition(-0.5f, -0.6f, 0.7f);
+        Vector3 spherePosition(-0.0f, -0.0f, 1.0f);
         Sphere sphere(spherePosition, 0.4f);
         sphere.setMaterial(&sphereMaterial);
         camera.scene().surfaces()->push_back(&sphere);
         
         Vector3 planeNormal(0.0f, 0.0f, -1.0f);
-        Plane plane(planeNormal, 2.0f);
+        Plane plane(planeNormal, 5.0f);
         camera.scene().surfaces()->push_back(&plane);
         
         Material *floorMaterial = new Material();
@@ -119,9 +121,12 @@ namespace ShadeKit {
         rightWall.setAlternateMaterial(rightWallMaterial);
         camera.scene().surfaces()->push_back(&rightWall);
         
-        Vector3 lightPosition(0.3f, 0.9f, 0.0f);
-        Light light(lightPosition);
-        camera.scene().lights().push_back(&light);
+        Vector3 laserPosition(0.0f, 0.0f, 0.0f);
+        SheetLaser laser(laserPosition);
+        float angle = 0.1;// - PI/2;
+        Vector3 sheetDir(cosf(angle), 0.0, sinf(angle));
+        laser.setSheetNormal(sheetDir);
+        camera.scene().lights().push_back(&laser);
         
         camera.scene().loadCube();
         
