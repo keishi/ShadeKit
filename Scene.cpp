@@ -38,8 +38,7 @@ namespace ShadeKit {
     {
         Matrix4x4 trans;
         trans.setToIndentity();std::cout << trans;
-        trans.translate(0.0f, 0.5f, 0.0f);std::cout << trans;
-        //trans.rotate(0.0f, 1.0f, 0.0f);std::cout << trans;
+        //trans.translate(0.0f, 0.5f, 0.0f);
         
         SurfaceGroup *group = new SurfaceGroup;
         for (int i = 0; i < Teapot_polygoncount; i++) {
@@ -51,7 +50,7 @@ namespace ShadeKit {
             v1 = trans * v1;
             v2 = trans * v2;
             Triangle *t = new Triangle(v0, v1, v2);
-            group->surfaces().push_back(t);
+            group->addSurface(t);
             
             Material *mirrorMaterial = new Material();
             mirrorMaterial->setColor(kColorRed);

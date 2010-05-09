@@ -21,6 +21,11 @@ namespace ShadeKit {
         BoundingBox() { }
         BoundingBox(const Vector3& min, const Vector3& max) : m_minPosition(min), m_maxPosition(max) { }
         void setToInfinite() {
+            m_minPosition = Vector3(2.0f, 2.0f, 2.0f);
+            m_maxPosition = Vector3(-2.0f, -2.0f, -2.0f);
+            BoundingBox(m_minPosition, m_maxPosition);
+        }
+        void setToNull() {
             m_minPosition = Vector3(1.0f, 1.0f, 1.0f);
             m_maxPosition = Vector3(-1.0f, -1.0f, -1.0f);
             BoundingBox(m_minPosition, m_maxPosition);
@@ -29,27 +34,31 @@ namespace ShadeKit {
         const Vector3& minPosition() const { return m_minPosition; }
         const Vector3& maxPosition() const { return m_maxPosition; }
         
-        bool isInfinite() const { return m_minPosition.x() - m_maxPosition.x() || m_minPosition.y() - m_maxPosition.y() || m_minPosition.z() - m_maxPosition.z(); }
+        bool isNull() const { return m_minPosition == Vector3(1.0f, 1.0f, 1.0f) && m_maxPosition == Vector3(-1.0f, -1.0f, -1.0f); }
+        bool isInfinite() const { return m_minPosition == Vector3(2.0f, 2.0f, 2.0f) && m_maxPosition == Vector3(-2.0f, -2.0f, -2.0f); }
         bool doesHit(const Ray& ray) const
         {
             if (isInfinite()) {
                 return true;
             }
-            return !((ray.direction().x() > 0.0 && ray.direction().x() > m_maxPosition.x()) ||
-                     (ray.direction().x() < 0.0 && ray.direction().x() < m_minPosition.x()) ||
-                     (ray.direction().y() > 0.0 && ray.direction().y() > m_maxPosition.y()) ||
-                     (ray.direction().y() < 0.0 && ray.direction().y() < m_minPosition.y()) ||
-                     (ray.direction().z() > 0.0 && ray.direction().z() > m_maxPosition.z()) ||
-                     (ray.direction().z() < 0.0 && ray.direction().z() < m_minPosition.z()));
+            if (isNull()) {
+                return false;
+            }
+            return !((ray.direction().x() > 0.0 && ray.origin().x() > m_maxPosition.x()) ||
+                     (ray.direction().x() < 0.0 && ray.origin().x() < m_minPosition.x()) ||
+                     (ray.direction().y() > 0.0 && ray.origin().y() > m_maxPosition.y()) ||
+                     (ray.direction().y() < 0.0 && ray.origin().y() < m_minPosition.y()) ||
+                     (ray.direction().z() > 0.0 && ray.origin().z() > m_maxPosition.z()) ||
+                     (ray.direction().z() < 0.0 && ray.origin().z() < m_minPosition.z()));
         }
-        BoundingBox unionBox(BoundingBox& box) const
+        BoundingBox unionBox(const BoundingBox& box) const
         {
-            Vector3 maxPos(MAX(m_minPosition.x(), m_maxPosition.x()), 
-                           MAX(m_minPosition.y(), m_maxPosition.y()), 
-                           MAX(m_minPosition.z(), m_maxPosition.z()));
-            Vector3 minPos(MIN(m_minPosition.x(), m_maxPosition.x()), 
-                           MIN(m_minPosition.y(), m_maxPosition.y()), 
-                           MIN(m_minPosition.z(), m_maxPosition.z()));
+            Vector3 maxPos(MAX(m_minPosition.x(), box.maxPosition().x()), 
+                           MAX(m_minPosition.y(), box.maxPosition().y()), 
+                           MAX(m_minPosition.z(), box.maxPosition().z()));
+            Vector3 minPos(MIN(m_minPosition.x(), box.minPosition().x()), 
+                           MIN(m_minPosition.y(), box.minPosition().y()), 
+                           MIN(m_minPosition.z(), box.minPosition().z()));
             return BoundingBox(minPos, maxPos);
         }
     private:

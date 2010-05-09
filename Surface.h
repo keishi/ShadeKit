@@ -24,6 +24,8 @@ namespace ShadeKit {
             m_boundingBox.setToInfinite();
         }
         
+        const BoundingBox& boundingBox() const { return m_boundingBox; }
+        
         virtual bool hit(Ray& ray, HitInfo* hitInfo) = 0;
         
     protected:

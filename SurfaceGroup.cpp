@@ -12,6 +12,10 @@
 namespace ShadeKit {
     bool SurfaceGroup::hit(Ray& ray, HitInfo* hitInfo)
     {
+        if (!m_boundingBox.doesHit(ray)) {
+            return false;
+        }
+        
         float hitDistance = INFINITY;
         HitInfo intersectionInfo;
         // find nearest intersection

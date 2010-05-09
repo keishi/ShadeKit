@@ -38,6 +38,7 @@ namespace ShadeKit {
         if (!m_boundingBox.doesHit(ray)) {
             return false;
         }
+        
         float vn = ray.direction().dot(m_normal);
         bool isRightSide = vn < 0;
         if (fabs(vn) < kSmallValue)
