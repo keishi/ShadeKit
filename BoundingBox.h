@@ -10,6 +10,9 @@
 #ifndef BoundingBox_h
 #define BoundingBox_h
 
+#define MIN(a, b) (a < b ? a : b)
+#define MAX(a, b) (a > b ? a : b)
+
 #include "Ray.h"
 
 namespace ShadeKit {
@@ -22,6 +25,10 @@ namespace ShadeKit {
             m_maxPosition = Vector3(-1.0f, -1.0f, -1.0f);
             BoundingBox(m_minPosition, m_maxPosition);
         }
+        
+        const Vector3& minPosition() const { return m_minPosition; }
+        const Vector3& maxPosition() const { return m_maxPosition; }
+        
         bool isInfinite() const { return m_minPosition.x() - m_maxPosition.x() || m_minPosition.y() - m_maxPosition.y() || m_minPosition.z() - m_maxPosition.z(); }
         bool doesHit(const Ray& ray) const
         {
@@ -34,6 +41,16 @@ namespace ShadeKit {
                      (ray.direction().y() < 0.0 && ray.direction().y() < m_minPosition.y()) ||
                      (ray.direction().z() > 0.0 && ray.direction().z() > m_maxPosition.z()) ||
                      (ray.direction().z() < 0.0 && ray.direction().z() < m_minPosition.z()));
+        }
+        BoundingBox unionBox(BoundingBox& box) const
+        {
+            Vector3 maxPos(MAX(m_minPosition.x(), m_maxPosition.x()), 
+                           MAX(m_minPosition.y(), m_maxPosition.y()), 
+                           MAX(m_minPosition.z(), m_maxPosition.z()));
+            Vector3 minPos(MIN(m_minPosition.x(), m_maxPosition.x()), 
+                           MIN(m_minPosition.y(), m_maxPosition.y()), 
+                           MIN(m_minPosition.z(), m_maxPosition.z()));
+            return BoundingBox(minPos, maxPos);
         }
     private:
         Vector3 m_minPosition;

@@ -19,6 +19,8 @@ namespace ShadeKit {
     public:
         std::vector<Surface*>& surfaces() { return m_surfaces; };
         
+        bool hit(Ray& ray, HitInfo* hitInfo);
+        
     private:
         std::vector<Surface*> m_surfaces;
     };

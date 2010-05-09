@@ -22,7 +22,7 @@ namespace ShadeKit {
         HitInfo hitInfo = m_scene.findHit(ray);
         if (hitInfo.surface()) {
             Vector3 hitPosition = hitInfo.position();
-            Vector3 hitNormal = hitPosition = hitInfo.normal();
+            Vector3 hitNormal = hitInfo.normal();
             Material *hitMaterial = hitInfo.material();
             *acc = *acc + hitMaterial->ambient() * hitMaterial->color();
             
@@ -57,7 +57,7 @@ namespace ShadeKit {
                 Color lightColor = light->color() * light->intensityAt(hitPosition);
                 Color c = hitMaterial->color() * lightColor * hitMaterial->diffuse() * shade;
                 *acc = *acc + c;
-                
+                /*
                 if (m_renderHighlight) {
                     float viewProjection = ray.direction().dot(hitNormal);
                     Vector3 blinnDirection = lightRay.direction() - ray.direction();
@@ -79,9 +79,9 @@ namespace ShadeKit {
                     raytrace(reflectedRay, &reflectedColor, level + 1);
                     reflectedColor = reflectedColor * hitMaterial->reflectivity();
                     *acc = *acc + reflectedColor;
-                }
+                }*/
             }
-        }
+         }
         
         return hitInfo;
     }

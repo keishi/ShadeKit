@@ -378,17 +378,17 @@ namespace ShadeKit {
     
     inline Vector4 operator*(const Matrix4x4& a, const Vector4& v)
     {
-        return Vector4(a.m11() * v.x() + a.m12() * v.y() + a.m13() * v.z() + a.m14() * v.w(),
-                       a.m21() * v.x() + a.m22() * v.y() + a.m23() * v.z() + a.m24() * v.w(),
-                       a.m31() * v.x() + a.m32() * v.y() + a.m33() * v.z() + a.m34() * v.w(),
-                       a.m41() * v.x() + a.m42() * v.y() + a.m43() * v.z() + a.m44() * v.w()); 
+        return Vector4(a.m11() * v.x() + a.m21() * v.y() + a.m31() * v.z() + a.m41() * v.w(),
+                       a.m12() * v.x() + a.m22() * v.y() + a.m32() * v.z() + a.m42() * v.w(),
+                       a.m13() * v.x() + a.m23() * v.y() + a.m33() * v.z() + a.m43() * v.w(),
+                       a.m14() * v.x() + a.m24() * v.y() + a.m34() * v.z() + a.m44() * v.w()); 
     }
     
     inline Vector3 operator*(const Matrix4x4& a, const Vector3& v)
     {
-        return Vector3(a.m11() * v.x() + a.m12() * v.y() + a.m13() * v.z() + a.m14(),
-                       a.m21() * v.x() + a.m22() * v.y() + a.m23() * v.z() + a.m24(),
-                       a.m31() * v.x() + a.m32() * v.y() + a.m33() * v.z() + a.m34()); 
+        return Vector3(a.m11() * v.x() + a.m21() * v.y() + a.m31() * v.z() + a.m41(),
+                       a.m12() * v.x() + a.m22() * v.y() + a.m32() * v.z() + a.m42(),
+                       a.m13() * v.x() + a.m23() * v.y() + a.m33() * v.z() + a.m43()); 
     }
     
     inline Matrix4x4 operator/(const Matrix4x4& a, float m)
@@ -432,6 +432,7 @@ namespace ShadeKit {
                          m / a.m44());
     }
     
+    std::ostream& operator<<(std::ostream& out, const Matrix4x4& a);
 }
 
 #endif

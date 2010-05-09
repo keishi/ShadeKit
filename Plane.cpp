@@ -22,6 +22,7 @@ namespace ShadeKit {
                 hitInfo->setMaterial(m_material);
                 hitInfo->setPosition(hitPosition);
                 hitInfo->setSurface(this);
+                hitInfo->setRay(&ray);
                 return true;
             }
         }

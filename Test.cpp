@@ -50,14 +50,15 @@ namespace ShadeKit {
     }
     void Test::testCamera()
     {
-        Camera camera(320, 240);
+        Camera camera(640, 480);
         //camera.setLookat(Vector3(0.0, -0.2, 1.0));
         //camera.setUp(Vector3(0.0, 1.0, 1.0));
-        //camera.setEye(Vector3(0.0, 0.0, -3.0));
+        camera.setEye(Vector3(0.0, 1.0, -8.0));
         //camera.setZNear(3.0);
         //camera.setFOVY(90.0f);
-        //camera.setRenderShadow(false);
+        camera.setRenderShadow(false);
         camera.setRenderReflection(false);
+        
         /*
         Material mirrorMaterial;
         mirrorMaterial.setColor(kColorBlack);
@@ -73,16 +74,16 @@ namespace ShadeKit {
         mirror1.setMaterial(mirrorMaterial);
         camera.scene().surfaces()->push_back(&mirror1);
         */
-        
+        /*
         Material sphereMaterial;
         sphereMaterial.setColor(kColorRed);
         sphereMaterial.setShininess(3.3);
         sphereMaterial.setSpecular(kColorWhite);
-        Vector3 spherePosition(-0.0f, -0.0f, 1.0f);
+        Vector3 spherePosition(0.0f, 0.4f, 1.0f);
         Sphere sphere(spherePosition, 0.4f);
         sphere.setMaterial(&sphereMaterial);
-        camera.scene().surfaces()->push_back(&sphere);
-        
+         camera.scene().surfaces()->push_back(&sphere);
+        */
         Vector3 planeNormal(0.0f, 0.0f, -1.0f);
         Plane plane(planeNormal, 5.0f);
         camera.scene().surfaces()->push_back(&plane);
@@ -90,14 +91,14 @@ namespace ShadeKit {
         Material *floorMaterial = new Material();
         floorMaterial->setColor(kColorBlack);
         Vector3 floorNormal(0.0f, 1.0f, 0.0f);
-        Plane floor(floorNormal, 1.0f);
+        Plane floor(floorNormal, 0.0f);
         floor.setMaterial(floorMaterial);
         camera.scene().surfaces()->push_back(&floor);
         
         Material *ceilingMaterial = new Material();
         ceilingMaterial->setColor(kColorRed);
         Vector3 ceilingNormal(0.0f, -1.0f, 0.0f);
-        Plane ceiling(ceilingNormal, 1.0f);
+        Plane ceiling(ceilingNormal, 2.0f);
         ceiling.setMaterial(ceilingMaterial);
         camera.scene().surfaces()->push_back(&ceiling);
         
@@ -117,12 +118,9 @@ namespace ShadeKit {
         rightWall.setMaterial(rightWallMaterial);
         camera.scene().surfaces()->push_back(&rightWall);
         
-        Vector3 laserPosition(0.0f, 0.0f, 0.0f);
-        SheetLaser laser(laserPosition);
-        float angle = 0.1;// - PI/2;
-        Vector3 sheetDir(cosf(angle), 0.0, sinf(angle));
-        laser.setSheetNormal(sheetDir);
-        camera.scene().lights().push_back(&laser);
+        Vector3 lightPosition(0.0f, 1.9f, 0.0f);
+        Light light(lightPosition);
+        camera.scene().lights().push_back(&light);
         
         camera.scene().loadCube();
         

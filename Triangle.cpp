@@ -9,9 +9,6 @@
 
 #include "Triangle.h"
 
-#define MIN(a, b) (a < b ? a : b)
-#define MAX(a, b) (a > b ? a : b)
-
 namespace ShadeKit {
     
     const float kSmallValue = -0.000001;
@@ -80,6 +77,6 @@ namespace ShadeKit {
         hitInfo->setPosition(hitPosition);
         hitInfo->setRay(&ray);
         hitInfo->setSurface(this);
-        return distance;
+        return true;
     }
 }
