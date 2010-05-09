@@ -44,8 +44,8 @@ namespace ShadeKit {
             Triangle *t = new Triangle(v0, v1, v2);
             m_surfaces.push_back(t);
             
-            Material mirrorMaterial;
-            mirrorMaterial.setColor(kColorRed);
+            Material *mirrorMaterial = new Material();
+            mirrorMaterial->setColor(kColorRed);
             t->setMaterial(mirrorMaterial);
         }
     }

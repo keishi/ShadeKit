@@ -21,20 +21,18 @@ namespace ShadeKit {
     } LightAttenuation;
     class Light {
     public:
-        Light(Vector3& pos) : m_position(pos), m_color(kColorWhite), m_intensity(1.0f), m_attenuation(PKLightAttenuationLinear) { }
+        Light(Vector3& pos) : m_position(pos), m_color(kColorWhite), m_attenuation(PKLightAttenuationLinear) { }
         
         const Vector3& position() const { return m_position; }
         const Color& color() const { return m_color; }
-        const float intensity() const { return m_intensity; }
         const LightAttenuation attenuation() const { return m_attenuation; }
+        const float intensityAt(const Vector3& position) const { return 1.0; }
         
-        void setIntensity(float intensity) { m_intensity = intensity; }
         void setAttenuation(LightAttenuation attenuation) { m_attenuation = attenuation; }
         
     private:
         Vector3 m_position;
         Color m_color;
-        float m_intensity;
         LightAttenuation m_attenuation;
     };
 }

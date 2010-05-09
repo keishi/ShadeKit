@@ -19,7 +19,7 @@ namespace ShadeKit {
         
         const Vector3& center() const { return m_center; }
         float radius() const { return m_radius; }
-        const Material& material() const { return m_material; }
+        const Material* material() const { return m_material; }
         
         void updateBoundingBox()
         {
@@ -34,10 +34,10 @@ namespace ShadeKit {
             updateBoundingBox();
         }
         void setRadius(const float f) { m_radius = f; m_radiusSq = f * f; m_radiusInv = 1.0f / f; updateBoundingBox(); }
-        void setMaterial(const Material& material) { m_material = material; }
+        void setMaterial(Material* material) { m_material = material; }
         
         Vector3 normalAt(Vector3& pos) { return (pos - m_center) * m_radiusInv; };
-        Material materialAt(Vector3& pos) { return m_material; };
+        Material* materialAt(Vector3& pos) { return m_material; };
         float hit(Ray& ray);
         
     private:
@@ -45,7 +45,7 @@ namespace ShadeKit {
         float m_radius;
         float m_radiusSq;
         float m_radiusInv;
-        Material m_material;
+        Material* m_material;
     };
 }
 

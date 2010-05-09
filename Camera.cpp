@@ -25,8 +25,8 @@ namespace ShadeKit {
         if (hitSurface) {
             Vector3 hitPosition = ray.pointAtDistance(hitDistance);
             Vector3 hitNormal = hitSurface->normalAt(hitPosition);
-            Material hitMaterial = hitSurface->materialAt(hitPosition);
-            *acc = *acc + hitMaterial.ambient() * hitMaterial.color();
+            Material *hitMaterial = hitSurface->materialAt(hitPosition);
+            *acc = *acc + hitMaterial->ambient() * hitMaterial->color();
             
             std::vector<Light*> lights = m_scene.lights();
             for (unsigned int i = 0; i < lights.size(); i++) {
@@ -57,8 +57,8 @@ namespace ShadeKit {
                 if (isShadow) {
                     shade = 0.0;
                 }
-                Color lightColor = light->color() * light->intensity();
-                Color c = hitMaterial.color() * lightColor * hitMaterial.diffuse() * shade;
+                Color lightColor = light->color() * light->intensityAt(hitPosition);
+                Color c = hitMaterial->color() * lightColor * hitMaterial->diffuse() * shade;
                 *acc = *acc + c;
                 
                 if (m_renderHighlight) {
@@ -67,12 +67,12 @@ namespace ShadeKit {
                     float temp = blinnDirection.normSq();
                     if (temp != 0.0) {
                         float blinn = (1.0 / sqrtf(temp)) * (lightProjection > viewProjection ? lightProjection - viewProjection : 0.0);
-                        blinn = pow(blinn, hitMaterial.shininess());
-                        *acc = *acc + lightColor * hitMaterial.specular() * blinn;
+                        blinn = pow(blinn, hitMaterial->shininess());
+                        *acc = *acc + lightColor * hitMaterial->specular() * blinn;
                     }
                 }
                 
-                if (m_renderReflection && hitMaterial.reflectivity() > 0.0 && level < kMaxTraceLevel) {
+                if (m_renderReflection && hitMaterial->reflectivity() > 0.0 && level < kMaxTraceLevel) {
                     float reflection = 2.0 * ray.direction().dot(hitNormal);
                     Vector3 reflectionDirection = (ray.direction() - (hitNormal * reflection)).normalize();
                     Ray reflectedRay;
@@ -80,7 +80,7 @@ namespace ShadeKit {
                     reflectedRay.setDirection(reflectionDirection);
                     Color reflectedColor = kColorBlack;
                     raytrace(reflectedRay, &reflectedColor, level + 1);
-                    reflectedColor = reflectedColor * hitMaterial.reflectivity();
+                    reflectedColor = reflectedColor * hitMaterial->reflectivity();
                     *acc = *acc + reflectedColor;
                 }
             }

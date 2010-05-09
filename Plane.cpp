@@ -22,7 +22,7 @@ namespace ShadeKit {
         return kNoHit;
     }
     
-    Material Plane::materialAt(Vector3& pos)
+    Material* Plane::materialAt(Vector3& pos)
     {
         float u = pos.dot(m_uAxis);
         float v = pos.dot(m_vAxis);

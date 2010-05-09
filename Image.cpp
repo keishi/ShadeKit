@@ -25,7 +25,12 @@ namespace ShadeKit {
             delete [] m_pixels;
     }
     
-    void Image::writeBMPFile(const char *filename)
+    void loadBMPFile(const char *filename)
+    {
+        
+    }
+    
+    void Image::writeBMPFile(const char *filename) const
     {
         std::ofstream fs (filename, std::ios::out | std::ios::binary);
         if (!fs)

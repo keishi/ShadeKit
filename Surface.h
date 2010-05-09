@@ -25,7 +25,7 @@ namespace ShadeKit {
         
         virtual float hit(Ray& ray) = 0;
         virtual Vector3 normalAt(Vector3& pos) = 0;
-        virtual Material materialAt(Vector3& pos) = 0;
+        virtual Material* materialAt(Vector3& pos) = 0;
         
     protected:
         BoundingBox m_boundingBox;

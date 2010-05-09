@@ -78,40 +78,41 @@ namespace ShadeKit {
         sphereMaterial.setSpecular(kColorWhite);
         Vector3 spherePosition(-0.5f, -0.6f, 0.7f);
         Sphere sphere(spherePosition, 0.4f);
-        sphere.setMaterial(sphereMaterial);
+        sphere.setMaterial(&sphereMaterial);
         camera.scene().surfaces()->push_back(&sphere);
         
         Vector3 planeNormal(0.0f, 0.0f, -1.0f);
         Plane plane(planeNormal, 2.0f);
         camera.scene().surfaces()->push_back(&plane);
         
-        Material floorMaterial;
-        floorMaterial.setColor(kColorBlack);
+        Material *floorMaterial = new Material();
+        floorMaterial->setColor(kColorBlack);
         Vector3 floorNormal(0.0f, 1.0f, 0.0f);
         Plane floor(floorNormal, 1.0f);
         floor.setMaterial(floorMaterial);
+        floor.setAlternateMaterial(floorMaterial);
         camera.scene().surfaces()->push_back(&floor);
         
-        Material ceilingMaterial;
-        ceilingMaterial.setColor(kColorRed);
+        Material *ceilingMaterial = new Material();
+        ceilingMaterial->setColor(kColorRed);
         Vector3 ceilingNormal(0.0f, -1.0f, 0.0f);
         Plane ceiling(ceilingNormal, 1.0f);
         ceiling.setMaterial(ceilingMaterial);
         ceiling.setAlternateMaterial(ceilingMaterial);
         camera.scene().surfaces()->push_back(&ceiling);
         
-        Material leftWallMaterial;
-        leftWallMaterial.setColor(kColorBlue);
-        leftWallMaterial.setReflectivity(1.0);
+        Material *leftWallMaterial = new Material();
+        leftWallMaterial->setColor(kColorBlue);
+        leftWallMaterial->setReflectivity(1.0);
         Vector3 leftWallNormal(1.0f, 0.0f, 0.0f);
         Plane leftWall(leftWallNormal, 1.0f);
         leftWall.setMaterial(leftWallMaterial);
         leftWall.setAlternateMaterial(leftWallMaterial);
         camera.scene().surfaces()->push_back(&leftWall);
         
-        Material rightWallMaterial;
-        rightWallMaterial.setColor(kColorGreen);
-        rightWallMaterial.setReflectivity(1.0);
+        Material *rightWallMaterial = new Material();
+        rightWallMaterial->setColor(kColorGreen);
+        rightWallMaterial->setReflectivity(1.0);
         Vector3 rightWallNormal(-1.0f, 0.0f, 0.0f);
         Plane rightWall(rightWallNormal, 1.0f);
         rightWall.setMaterial(rightWallMaterial);
