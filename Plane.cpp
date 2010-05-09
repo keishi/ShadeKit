@@ -10,25 +10,21 @@
 #include "Plane.h"
 
 namespace ShadeKit {
-    float Plane::hit(Ray& ray)
+    bool Plane::hit(Ray& ray, HitInfo *hitInfo)
     {
         float d = ray.direction().dot(m_normal);
         if (d != 0.0) {
             float dist = -(ray.origin().dot(m_normal) + m_distance) / d;
             if (dist > 0) {
-                return dist;
+                Vector3 hitPosition = ray.pointAtDistance(dist);
+                hitInfo->setDistance(dist);
+                hitInfo->setNormal(m_normal);
+                hitInfo->setMaterial(m_material);
+                hitInfo->setPosition(hitPosition);
+                hitInfo->setSurface(this);
+                return true;
             }
         }
-        return kNoHit;
-    }
-    
-    Material* Plane::materialAt(Vector3& pos)
-    {
-        float u = pos.dot(m_uAxis);
-        float v = pos.dot(m_vAxis);
-        float size = 0.08;
-        int uInt = (u < 0 ? u / size : floor(-u / size));
-        int vInt = (v < 0 ? v / size : floor(-v / size));
-        return (uInt % 2) ^ (vInt % 2) ? m_material : m_alternateMaterial;
+        return false;
     }
 }

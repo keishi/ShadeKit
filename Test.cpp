@@ -92,7 +92,6 @@ namespace ShadeKit {
         Vector3 floorNormal(0.0f, 1.0f, 0.0f);
         Plane floor(floorNormal, 1.0f);
         floor.setMaterial(floorMaterial);
-        floor.setAlternateMaterial(floorMaterial);
         camera.scene().surfaces()->push_back(&floor);
         
         Material *ceilingMaterial = new Material();
@@ -100,7 +99,6 @@ namespace ShadeKit {
         Vector3 ceilingNormal(0.0f, -1.0f, 0.0f);
         Plane ceiling(ceilingNormal, 1.0f);
         ceiling.setMaterial(ceilingMaterial);
-        ceiling.setAlternateMaterial(ceilingMaterial);
         camera.scene().surfaces()->push_back(&ceiling);
         
         Material *leftWallMaterial = new Material();
@@ -109,7 +107,6 @@ namespace ShadeKit {
         Vector3 leftWallNormal(1.0f, 0.0f, 0.0f);
         Plane leftWall(leftWallNormal, 1.0f);
         leftWall.setMaterial(leftWallMaterial);
-        leftWall.setAlternateMaterial(leftWallMaterial);
         camera.scene().surfaces()->push_back(&leftWall);
         
         Material *rightWallMaterial = new Material();
@@ -118,7 +115,6 @@ namespace ShadeKit {
         Vector3 rightWallNormal(-1.0f, 0.0f, 0.0f);
         Plane rightWall(rightWallNormal, 1.0f);
         rightWall.setMaterial(rightWallMaterial);
-        rightWall.setAlternateMaterial(rightWallMaterial);
         camera.scene().surfaces()->push_back(&rightWall);
         
         Vector3 laserPosition(0.0f, 0.0f, 0.0f);

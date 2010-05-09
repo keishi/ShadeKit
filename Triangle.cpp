@@ -36,44 +36,50 @@ namespace ShadeKit {
         m_boundingBox = BoundingBox(min, max);
     }
     
-    float Triangle::hit(Ray& ray)
+    bool Triangle::hit(Ray& ray, HitInfo* hitInfo)
     {
         if (!m_boundingBox.doesHit(ray)) {
-            return kNoHit;
+            return false;
         }
         float vn = ray.direction().dot(m_normal);
         bool isRightSide = vn < 0;
         if (fabs(vn) < kSmallValue)
-            return kNoHit;
+            return false;
         if (!isRightSide && !m_isDoubleSided) {
-            return kNoHit;
+            return false;
         }
         Vector3 v0r = ray.origin() - m_v0;
         float xpn = m_normal.dot(v0r);
         float distance = -xpn / vn;
         if (distance < 0)
-            return kNoHit;
+            return false;
         Vector3 hitPosition = ray.pointAtDistance(distance);
         
         Vector3 v0h = hitPosition - m_v0;
         Vector3 v01 = m_v1 - m_v0;
         Vector3 cross0 = v0h.cross(v01);
         if (cross0.dot(m_normal) < kSmallValue) {
-            return kNoHit;
+            return false;
         }
         Vector3 v1h = hitPosition - m_v1;
         Vector3 v12 = m_v2 - m_v1;
         Vector3 cross1 = v1h.cross(v12);
         if (cross1.dot(m_normal) < kSmallValue) {
-            return kNoHit;
+            return false;
         }
         Vector3 v2h = hitPosition - m_v2;
         Vector3 v20 = m_v0 - m_v2;
         Vector3 cross2 = v2h.cross(v20);
         if (cross2.dot(m_normal) < kSmallValue) {
-            return kNoHit;
+            return false;
         }
         
+        hitInfo->setDistance(distance);
+        hitInfo->setMaterial(m_material);
+        hitInfo->setNormal(m_normal);
+        hitInfo->setPosition(hitPosition);
+        hitInfo->setRay(&ray);
+        hitInfo->setSurface(this);
         return distance;
     }
 }

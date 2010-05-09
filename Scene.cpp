@@ -13,25 +13,22 @@
 #include "Matrix4x4.h"
 
 namespace ShadeKit {
-    Surface *Scene::findHit(Ray ray, float *distance)
+    HitInfo Scene::findHit(Ray& ray)
     {
         float hitDistance = INFINITY;
-        Surface *hitSurface = NULL;
+        HitInfo hitInfo;
+        HitInfo intersectionInfo;
         // find nearest intersection
         for (unsigned int i = 0; i < m_surfaces.size(); i++) {
             Surface *s = m_surfaces[i];
-            float distance = s->hit(ray);
-            if (distance > 0.0001) {
-                if (distance < hitDistance) {
-                    hitDistance = distance;
-                    hitSurface = s;
+            if (s->hit(ray, &intersectionInfo)) {
+                if (intersectionInfo.distance() < hitDistance) {
+                    hitDistance = intersectionInfo.distance();
+                    hitInfo = intersectionInfo;
                 }
             }
         }
-        if (distance) {
-            *distance = hitDistance;
-        }
-        return hitSurface;
+        return hitInfo;
     }
     
     

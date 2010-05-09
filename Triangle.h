@@ -25,7 +25,7 @@ namespace ShadeKit {
         
         Vector3 normalAt(Vector3& pos) { return m_normal; };
         Material* materialAt(Vector3& pos) { return m_material; };
-        float hit(Ray& ray);
+        bool hit(Ray& ray, HitInfo* hitInfo);
         
     private:
         Vector3 m_v0;

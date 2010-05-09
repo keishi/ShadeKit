@@ -34,7 +34,7 @@ namespace ShadeKit {
         
         Scene& scene() { return m_scene; }
         
-        Surface *raytrace(Ray& ray, Color *acc, int level);
+        HitInfo raytrace(Ray& ray, Color *acc, int level);
         Image render();
         
         void setZNear(float z) { m_zNear = z; }

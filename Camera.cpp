@@ -13,18 +13,17 @@ const int kMaxTraceLevel = 10;
 
 
 namespace ShadeKit {
-    Surface *Camera::raytrace(Ray& ray, Color *acc, int level)
+    HitInfo Camera::raytrace(Ray& ray, Color *acc, int level)
     {
         *acc = kColorBlack;
         if (level > kMaxTraceLevel) {
-            return NULL;
+            return HitInfo();
         }
-        float hitDistance = INFINITY;
-        Surface *hitSurface = m_scene.findHit(ray, &hitDistance);
-        if (hitSurface) {
-            Vector3 hitPosition = ray.pointAtDistance(hitDistance);
-            Vector3 hitNormal = hitSurface->normalAt(hitPosition);
-            Material *hitMaterial = hitSurface->materialAt(hitPosition);
+        HitInfo hitInfo = m_scene.findHit(ray);
+        if (hitInfo.surface()) {
+            Vector3 hitPosition = hitInfo.position();
+            Vector3 hitNormal = hitPosition = hitInfo.normal();
+            Material *hitMaterial = hitInfo.material();
             *acc = *acc + hitMaterial->ambient() * hitMaterial->color();
             
             std::vector<Light*> lights = m_scene.lights();
@@ -40,10 +39,9 @@ namespace ShadeKit {
                 
                 bool isShadow = false;
                 if (m_renderShadow) {
-                    Surface *obstruction;
-                    float obstructionDistance = INFINITY;
-                    if (obstruction = m_scene.findHit(lightRay, &obstructionDistance)) {
-                        if (obstructionDistance < lightDistance) {
+                    HitInfo obstructionHitInfo = m_scene.findHit(lightRay);
+                    if (obstructionHitInfo.surface()) {
+                        if (obstructionHitInfo.distance() < lightDistance) {
                             isShadow = true;
                         }
                     }
@@ -84,7 +82,8 @@ namespace ShadeKit {
                 }
             }
         }
-        return hitSurface;
+        
+        return hitInfo;
     }
     Image Camera::render()
     {
@@ -106,7 +105,8 @@ namespace ShadeKit {
                 viewRay.setDirection(viewRayDirection);
                 
                 Color color;
-                if (!raytrace(viewRay, &color, 0)) {
+                HitInfo raytraceHitInfo = raytrace(viewRay, &color, 0);
+                if (!raytraceHitInfo.surface()) {
                     color = m_backgroundColor;
                 }
                 image.setPixelColor(x, y, color);

@@ -20,6 +20,8 @@
 		C31B5CF21192F3A3003A3829 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B5CF11192F3A3003A3829 /* Camera.cpp */; };
 		C3283BDA11963C6000324752 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3283BD911963C6000324752 /* BoundingBox.cpp */; };
 		C3283D021196881E00324752 /* SheetLaser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3283D011196881E00324752 /* SheetLaser.cpp */; };
+		C3283E89119699C700324752 /* SurfaceGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3283E88119699C700324752 /* SurfaceGroup.cpp */; };
+		C3283ED11196B0F700324752 /* HitInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3283ED01196B0F700324752 /* HitInfo.cpp */; };
 		C33FEB4F11932CAB00744F90 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33FEB4E11932CAB00744F90 /* Triangle.cpp */; };
 		C3D0C53E1193114300653F89 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3D0C53D1193114300653F89 /* Plane.cpp */; };
 		C3D2C515119357200099C0D2 /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3D2C514119357200099C0D2 /* Vector4.cpp */; };
@@ -67,6 +69,10 @@
 		C3283BD911963C6000324752 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
 		C3283D001196881E00324752 /* SheetLaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SheetLaser.h; sourceTree = "<group>"; };
 		C3283D011196881E00324752 /* SheetLaser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SheetLaser.cpp; sourceTree = "<group>"; };
+		C3283E87119699C700324752 /* SurfaceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceGroup.h; sourceTree = "<group>"; };
+		C3283E88119699C700324752 /* SurfaceGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurfaceGroup.cpp; sourceTree = "<group>"; };
+		C3283ECF1196B0F700324752 /* HitInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitInfo.h; sourceTree = "<group>"; };
+		C3283ED01196B0F700324752 /* HitInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HitInfo.cpp; sourceTree = "<group>"; };
 		C33FEB4D11932CAB00744F90 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
 		C33FEB4E11932CAB00744F90 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		C3D0C53C1193114300653F89 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
@@ -133,6 +139,8 @@
 				C3283BD911963C6000324752 /* BoundingBox.cpp */,
 				C3283D001196881E00324752 /* SheetLaser.h */,
 				C3283D011196881E00324752 /* SheetLaser.cpp */,
+				C3283ECF1196B0F700324752 /* HitInfo.h */,
+				C3283ED01196B0F700324752 /* HitInfo.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -155,6 +163,8 @@
 				C3D0C53D1193114300653F89 /* Plane.cpp */,
 				C33FEB4D11932CAB00744F90 /* Triangle.h */,
 				C33FEB4E11932CAB00744F90 /* Triangle.cpp */,
+				C3283E87119699C700324752 /* SurfaceGroup.h */,
+				C3283E88119699C700324752 /* SurfaceGroup.cpp */,
 			);
 			name = Surface;
 			sourceTree = "<group>";
@@ -227,6 +237,8 @@
 				C3D2C53A119387B40099C0D2 /* Matrix4x4.cpp in Sources */,
 				C3283BDA11963C6000324752 /* BoundingBox.cpp in Sources */,
 				C3283D021196881E00324752 /* SheetLaser.cpp in Sources */,
+				C3283E89119699C700324752 /* SurfaceGroup.cpp in Sources */,
+				C3283ED11196B0F700324752 /* HitInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,9 +19,9 @@ namespace ShadeKit {
     class Scene {
     public:
         std::vector<Light*>& lights() { return m_lights; };
-        std::vector<Surface*> *surfaces() { return &m_surfaces; };
+        std::vector<Surface*>* surfaces() { return &m_surfaces; };
         
-        Surface *findHit(Ray ray, float *distance);
+        HitInfo findHit(Ray& ray);
         void loadCube();
         
     private:

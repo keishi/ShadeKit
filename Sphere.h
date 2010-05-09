@@ -28,6 +28,7 @@ namespace ShadeKit {
             Vector3 max = m_center + r;
             m_boundingBox = BoundingBox(min, max);
         }
+        
         void setCenter(const Vector3& v) 
         {
             m_center = v;
@@ -36,9 +37,7 @@ namespace ShadeKit {
         void setRadius(const float f) { m_radius = f; m_radiusSq = f * f; m_radiusInv = 1.0f / f; updateBoundingBox(); }
         void setMaterial(Material* material) { m_material = material; }
         
-        Vector3 normalAt(Vector3& pos) { return (pos - m_center) * m_radiusInv; };
-        Material* materialAt(Vector3& pos) { return m_material; };
-        float hit(Ray& ray);
+        virtual bool hit(Ray& ray, HitInfo *hitInfo);
         
     private:
         Vector3 m_center;

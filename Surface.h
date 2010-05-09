@@ -12,6 +12,7 @@
 
 #include "Material.h"
 #include "BoundingBox.h"
+#include "HitInfo.h"
 
 const float kNoHit = -1.0;
 
@@ -23,9 +24,7 @@ namespace ShadeKit {
             m_boundingBox.setToInfinite();
         }
         
-        virtual float hit(Ray& ray) = 0;
-        virtual Vector3 normalAt(Vector3& pos) = 0;
-        virtual Material* materialAt(Vector3& pos) = 0;
+        virtual bool hit(Ray& ray, HitInfo* hitInfo) = 0;
         
     protected:
         BoundingBox m_boundingBox;

@@ -16,27 +16,17 @@ namespace ShadeKit {
         setRadius(radius);
         updateBoundingBox();
     }
-    float Sphere::hit(Ray& ray)
+    bool Sphere::hit(Ray& ray, HitInfo* hitInfo)
     {
         if (!m_boundingBox.doesHit(ray)) {
-            return kNoHit;
+            return false;
         }
-        /*
-        // check that ray is even headed toward the sphere first
-        if ((ray.direction().x() > 0.0 && ray.direction().x() > m_center.x() + m_radius) ||
-            (ray.direction().x() < 0.0 && ray.direction().x() < m_center.x() - m_radius) ||
-            (ray.direction().y() > 0.0 && ray.direction().y() > m_center.y() + m_radius) ||
-            (ray.direction().y() < 0.0 && ray.direction().y() < m_center.y() - m_radius) ||
-            (ray.direction().z() > 0.0 && ray.direction().z() > m_center.z() + m_radius) ||
-            (ray.direction().z() < 0.0 && ray.direction().z() < m_center.z() - m_radius)) {
-            return kNoHit;
-        }*/
         
         Vector3 dist = m_center - ray.origin();
         float b = ray.direction().dot(dist);
         float discriminant = m_radiusSq - dist.normSq() + b * b;
         if (discriminant < 0.0) {
-            return kNoHit;
+            return false;
         }
         
         // two possible intersections
@@ -48,7 +38,17 @@ namespace ShadeKit {
         } else if (t1 > 0.1) {
             t = t1;
         }
-        return t;
+        
+        Vector3 hitPosition = ray.pointAtDistance(t);
+        Vector3 hitNormal = (hitPosition - m_center) * m_radiusInv;
+        hitInfo->setDistance(t);
+        hitInfo->setNormal(hitNormal);
+        hitInfo->setMaterial(m_material);
+        hitInfo->setPosition(hitPosition);
+        hitInfo->setSurface(this);
+        hitInfo->setRay(&ray);
+        
+        return true;
     }
     std::ostream& operator<<(std::ostream& out, const Sphere& a)
     {
