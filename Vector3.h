@@ -17,6 +17,7 @@ namespace ShadeKit {
     class Vector3 {
     public:
         Vector3() : m_x(0.0f), m_y(0.0f), m_z(0.0f) { }
+        Vector3(float v) : m_x(v), m_y(v), m_z(v) { }
         Vector3(float x, float y, float z) : m_x(x), m_y(y), m_z(z) { }
         Vector3(const Vector3& v) : m_x(v.x()), m_y(v.y()), m_z(v.z()) { }
         

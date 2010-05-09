@@ -56,7 +56,7 @@ namespace ShadeKit {
         //camera.setZNear(3.0);
         //camera.setFOVY(90.0f);
         //camera.setRenderShadow(false);
-        //camera.setRenderReflection(false);
+        camera.setRenderReflection(false);
         /*
         Material mirrorMaterial;
         mirrorMaterial.setColor(kColorBlack);
@@ -102,6 +102,7 @@ namespace ShadeKit {
         
         Material leftWallMaterial;
         leftWallMaterial.setColor(kColorBlue);
+        leftWallMaterial.setReflectivity(1.0);
         Vector3 leftWallNormal(1.0f, 0.0f, 0.0f);
         Plane leftWall(leftWallNormal, 1.0f);
         leftWall.setMaterial(leftWallMaterial);
@@ -110,6 +111,7 @@ namespace ShadeKit {
         
         Material rightWallMaterial;
         rightWallMaterial.setColor(kColorGreen);
+        rightWallMaterial.setReflectivity(1.0);
         Vector3 rightWallNormal(-1.0f, 0.0f, 0.0f);
         Plane rightWall(rightWallNormal, 1.0f);
         rightWall.setMaterial(rightWallMaterial);

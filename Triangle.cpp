@@ -9,6 +9,9 @@
 
 #include "Triangle.h"
 
+#define MIN(a, b) (a < b ? a : b)
+#define MAX(a, b) (a > b ? a : b)
+
 namespace ShadeKit {
     
     const float kSmallValue = -0.000001;
@@ -17,21 +20,34 @@ namespace ShadeKit {
     : m_v0(v0)
     , m_v1(v1)
     , m_v2(v2)
+    , m_isDoubleSided(false)
     {
         Vector3 v02 = v2 - v0;
         Vector3 v01 = v1 - v0;
         m_normal = v02.cross(v01).normalize();
+        
+        Vector3 min = Vector3(MIN(MIN(v0.x(), v1.x()), v2.x()),
+                              MIN(MIN(v0.y(), v1.y()), v2.y()),
+                              MIN(MIN(v0.z(), v1.z()), v2.z()));
+        Vector3 max = Vector3(MAX(MAX(v0.x(), v1.x()), v2.x()),
+                              MAX(MAX(v0.y(), v1.y()), v2.y()),
+                              MAX(MAX(v0.z(), v1.z()), v2.z()));
+        
+        m_boundingBox = BoundingBox(min, max);
     }
     
     float Triangle::hit(Ray& ray)
     {
+        if (!m_boundingBox.doesHit(ray)) {
+            return kNoHit;
+        }
         float vn = ray.direction().dot(m_normal);
-        //bool isRightSide = vn < 0;
+        bool isRightSide = vn < 0;
         if (fabs(vn) < kSmallValue)
             return kNoHit;
-        /*if (!isRightSide && !isDoubleSided) {
-         return kNoHit;
-         }*/
+        if (!isRightSide && !m_isDoubleSided) {
+            return kNoHit;
+        }
         Vector3 v0r = ray.origin() - m_v0;
         float xpn = m_normal.dot(v0r);
         float distance = -xpn / vn;

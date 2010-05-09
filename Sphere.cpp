@@ -14,9 +14,24 @@ namespace ShadeKit {
     {
         setCenter(center);
         setRadius(radius);
+        updateBoundingBox();
     }
     float Sphere::hit(Ray& ray)
     {
+        if (!m_boundingBox.doesHit(ray)) {
+            return kNoHit;
+        }
+        /*
+        // check that ray is even headed toward the sphere first
+        if ((ray.direction().x() > 0.0 && ray.direction().x() > m_center.x() + m_radius) ||
+            (ray.direction().x() < 0.0 && ray.direction().x() < m_center.x() - m_radius) ||
+            (ray.direction().y() > 0.0 && ray.direction().y() > m_center.y() + m_radius) ||
+            (ray.direction().y() < 0.0 && ray.direction().y() < m_center.y() - m_radius) ||
+            (ray.direction().z() > 0.0 && ray.direction().z() > m_center.z() + m_radius) ||
+            (ray.direction().z() < 0.0 && ray.direction().z() < m_center.z() - m_radius)) {
+            return kNoHit;
+        }*/
+        
         Vector3 dist = m_center - ray.origin();
         float b = ray.direction().dot(dist);
         float discriminant = m_radiusSq - dist.normSq() + b * b;

@@ -10,17 +10,25 @@
 #ifndef Surface_h
 #define Surface_h
 
-#include "Ray.h"
 #include "Material.h"
+#include "BoundingBox.h"
 
 const float kNoHit = -1.0;
 
 namespace ShadeKit {
     class Surface {
     public:
+        Surface() 
+        {
+            m_boundingBox.setToInfinite();
+        }
+        
         virtual float hit(Ray& ray) = 0;
         virtual Vector3 normalAt(Vector3& pos) = 0;
         virtual Material materialAt(Vector3& pos) = 0;
+        
+    protected:
+        BoundingBox m_boundingBox;
     };
 }
 
