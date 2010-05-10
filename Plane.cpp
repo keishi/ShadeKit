@@ -15,7 +15,7 @@ namespace ShadeKit {
         float d = ray.direction().dot(m_normal);
         if (d != 0.0) {
             float dist = -(ray.origin().dot(m_normal) + m_distance) / d;
-            if (dist > 0) {
+            if (dist > 0.0001) {
                 Vector3 hitPosition = ray.pointAtDistance(dist);
                 hitInfo->setDistance(dist);
                 hitInfo->setNormal(m_normal);

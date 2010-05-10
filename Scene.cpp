@@ -9,7 +9,7 @@
 
 #include "Scene.h"
 #include "Triangle.h"
-#include "teapot.h"
+#include "bunny.h"
 #include "Matrix4x4.h"
 #include "SurfaceGroup.h"
 #include "Sphere.h"
@@ -40,20 +40,21 @@ namespace ShadeKit {
         trans.setToIndentity();std::cout << trans;
         //trans.translate(0.0f, 0.5f, 0.0f);
         
+        Material *mirrorMaterial = new Material();
+        mirrorMaterial->setColor(kColorGreen);
+        
         SurfaceGroup *group = new SurfaceGroup;
-        for (int i = 0; i < Teapot_polygoncount; i++) {
-            int *indices = Teapot_index[i];
-            Vector3 v0(Teapot_vertex[indices[0]][5], Teapot_vertex[indices[0]][6], Teapot_vertex[indices[0]][7]);
-            Vector3 v1(Teapot_vertex[indices[1]][5], Teapot_vertex[indices[1]][6], Teapot_vertex[indices[1]][7]);
-            Vector3 v2(Teapot_vertex[indices[2]][5], Teapot_vertex[indices[2]][6], Teapot_vertex[indices[2]][7]);
+        for (int i = 0; i < Bunny_polygoncount; i++) {
+            int *indices = Bunny_index[i];
+            Vector3 v0(Bunny_vertex[indices[0]][5], Bunny_vertex[indices[0]][6], Bunny_vertex[indices[0]][7]);
+            Vector3 v1(Bunny_vertex[indices[1]][5], Bunny_vertex[indices[1]][6], Bunny_vertex[indices[1]][7]);
+            Vector3 v2(Bunny_vertex[indices[2]][5], Bunny_vertex[indices[2]][6], Bunny_vertex[indices[2]][7]);
             v0 = trans * v0;
             v1 = trans * v1;
             v2 = trans * v2;
             Triangle *t = new Triangle(v0, v1, v2);
             group->addSurface(t);
             
-            Material *mirrorMaterial = new Material();
-            mirrorMaterial->setColor(kColorRed);
             t->setMaterial(mirrorMaterial);
         }
         m_surfaces.push_back(group);

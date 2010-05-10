@@ -14,11 +14,11 @@ namespace ShadeKit {
     std::ostream& operator<<(std::ostream& out, const Vector3& a)
     {
         out << "<";
-        out << a.x();
+        out << a.x;
         out << ",";
-        out << a.y();
+        out << a.y;
         out << ",";
-        out << a.z();
+        out << a.z;
         out << ">";
         return out;
     }

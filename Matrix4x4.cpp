@@ -20,9 +20,9 @@ namespace ShadeKit {
     }
     Matrix4x4& Matrix4x4::translate(const Vector3& t)
     {
-        Matrix4x4 trans(1.0f, 0.0f, 0.0f, t.x(), 
-                        0.0f, 1.0f, 0.0f, t.y(), 
-                        0.0f, 0.0f, 1.0f, t.z(), 
+        Matrix4x4 trans(1.0f, 0.0f, 0.0f, t.x, 
+                        0.0f, 1.0f, 0.0f, t.y, 
+                        0.0f, 0.0f, 1.0f, t.z, 
                         0.0f, 0.0f, 0.0f, 1.0f);
         return *this *= trans;
     }
@@ -36,9 +36,9 @@ namespace ShadeKit {
     }
     Matrix4x4& Matrix4x4::scale(const Vector3& s)
     {
-        Matrix4x4 trans(s.x(),  0.0f,  0.0f, 0.0f, 
-                         0.0f, s.y(),  0.0f, 0.0f, 
-                         0.0f,  0.0f, s.z(), 0.0f, 
+        Matrix4x4 trans(s.x,  0.0f,  0.0f, 0.0f, 
+                         0.0f, s.y,  0.0f, 0.0f, 
+                         0.0f,  0.0f, s.z, 0.0f, 
                          0.0f,  0.0f,  0.0f, 1.0f);
         return *this *= trans;
     }
@@ -60,9 +60,9 @@ namespace ShadeKit {
     }
     Matrix4x4& Matrix4x4::rotate(const Vector3& r)
     {
-        float rx = r.x();
-        float ry = r.y();
-        float rz = r.z();
+        float rx = r.x;
+        float ry = r.y;
+        float rz = r.z;
         Matrix4x4 transX(1.0f,     0.0f,      0.0f, 0.0f, 
                          0.0f, cosf(rx), -sinf(rx), 0.0f, 
                          0.0f, sinf(rx),  cosf(rx), 0.0f, 

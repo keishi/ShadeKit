@@ -10,8 +10,8 @@
 #ifndef BoundingBox_h
 #define BoundingBox_h
 
-#define MIN(a, b) (a < b ? a : b)
-#define MAX(a, b) (a > b ? a : b)
+#define MIN(a,b)  ( ((a)<(b)) ? (a) : (b) )
+#define MAX(a,b)  ( ((a)>(b)) ? (a) : (b) )
 
 #include "Ray.h"
 
@@ -44,21 +44,21 @@ namespace ShadeKit {
             if (isNull()) {
                 return false;
             }
-            return !((ray.direction().x() > 0.0 && ray.origin().x() > m_maxPosition.x()) ||
-                     (ray.direction().x() < 0.0 && ray.origin().x() < m_minPosition.x()) ||
-                     (ray.direction().y() > 0.0 && ray.origin().y() > m_maxPosition.y()) ||
-                     (ray.direction().y() < 0.0 && ray.origin().y() < m_minPosition.y()) ||
-                     (ray.direction().z() > 0.0 && ray.origin().z() > m_maxPosition.z()) ||
-                     (ray.direction().z() < 0.0 && ray.origin().z() < m_minPosition.z()));
+            return !((ray.direction().x > 0.0 && ray.origin().x > m_maxPosition.x) ||
+                     (ray.direction().x < 0.0 && ray.origin().x < m_minPosition.x) ||
+                     (ray.direction().y > 0.0 && ray.origin().y > m_maxPosition.y) ||
+                     (ray.direction().y < 0.0 && ray.origin().y < m_minPosition.y) ||
+                     (ray.direction().z > 0.0 && ray.origin().z > m_maxPosition.z) ||
+                     (ray.direction().z < 0.0 && ray.origin().z < m_minPosition.z));
         }
         BoundingBox unionBox(const BoundingBox& box) const
         {
-            Vector3 maxPos(MAX(m_minPosition.x(), box.maxPosition().x()), 
-                           MAX(m_minPosition.y(), box.maxPosition().y()), 
-                           MAX(m_minPosition.z(), box.maxPosition().z()));
-            Vector3 minPos(MIN(m_minPosition.x(), box.minPosition().x()), 
-                           MIN(m_minPosition.y(), box.minPosition().y()), 
-                           MIN(m_minPosition.z(), box.minPosition().z()));
+            Vector3 maxPos(MAX(m_maxPosition.x, box.maxPosition().x), 
+                           MAX(m_maxPosition.y, box.maxPosition().y), 
+                           MAX(m_maxPosition.z, box.maxPosition().z));
+            Vector3 minPos(MIN(m_minPosition.x, box.minPosition().x), 
+                           MIN(m_minPosition.y, box.minPosition().y), 
+                           MIN(m_minPosition.z, box.minPosition().z));
             return BoundingBox(minPos, maxPos);
         }
     private:

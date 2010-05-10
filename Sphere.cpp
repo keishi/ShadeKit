@@ -33,9 +33,9 @@ namespace ShadeKit {
         float t = kNoHit;
         float t0 = b - sqrt(discriminant);
         float t1 = b + sqrt(discriminant);
-        if (t0 > 0.1) {
+        if (t0 > 0.0001) {
             t = t0;
-        } else if (t1 > 0.1) {
+        } else if (t1 > 0.0001) {
             t = t1;
         }
         

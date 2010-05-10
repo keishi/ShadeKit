@@ -31,10 +31,10 @@ namespace ShadeKit {
         , m_m14(m14), m_m24(m24), m_m34(m34), m_m44(m44)
         { }
         Matrix4x4(const Vector4& u, const Vector4& v, const Vector4& s, const Vector4& t)
-        : m_m11(u.x()), m_m21(v.x()), m_m31(s.x()), m_m41(t.x())
-        , m_m12(u.y()), m_m22(v.y()), m_m32(s.y()), m_m42(t.y())
-        , m_m13(u.z()), m_m23(v.z()), m_m33(s.z()), m_m43(t.z())
-        , m_m14(u.w()), m_m24(v.w()), m_m34(s.w()), m_m44(t.w())
+        : m_m11(u.x), m_m21(v.x), m_m31(s.x), m_m41(t.x)
+        , m_m12(u.y), m_m22(v.y), m_m32(s.y), m_m42(t.y)
+        , m_m13(u.z), m_m23(v.z), m_m33(s.z), m_m43(t.z)
+        , m_m14(u.w), m_m24(v.w), m_m34(s.w), m_m44(t.w)
         { }
         
         float m11() const { return m_m11; }
@@ -378,17 +378,17 @@ namespace ShadeKit {
     
     inline Vector4 operator*(const Matrix4x4& a, const Vector4& v)
     {
-        return Vector4(a.m11() * v.x() + a.m21() * v.y() + a.m31() * v.z() + a.m41() * v.w(),
-                       a.m12() * v.x() + a.m22() * v.y() + a.m32() * v.z() + a.m42() * v.w(),
-                       a.m13() * v.x() + a.m23() * v.y() + a.m33() * v.z() + a.m43() * v.w(),
-                       a.m14() * v.x() + a.m24() * v.y() + a.m34() * v.z() + a.m44() * v.w()); 
+        return Vector4(a.m11() * v.x + a.m21() * v.y + a.m31() * v.z + a.m41() * v.w,
+                       a.m12() * v.x + a.m22() * v.y + a.m32() * v.z + a.m42() * v.w,
+                       a.m13() * v.x + a.m23() * v.y + a.m33() * v.z + a.m43() * v.w,
+                       a.m14() * v.x + a.m24() * v.y + a.m34() * v.z + a.m44() * v.w); 
     }
     
     inline Vector3 operator*(const Matrix4x4& a, const Vector3& v)
     {
-        return Vector3(a.m11() * v.x() + a.m21() * v.y() + a.m31() * v.z() + a.m41(),
-                       a.m12() * v.x() + a.m22() * v.y() + a.m32() * v.z() + a.m42(),
-                       a.m13() * v.x() + a.m23() * v.y() + a.m33() * v.z() + a.m43()); 
+        return Vector3(a.m11() * v.x + a.m21() * v.y + a.m31() * v.z + a.m41(),
+                       a.m12() * v.x + a.m22() * v.y + a.m32() * v.z + a.m42(),
+                       a.m13() * v.x + a.m23() * v.y + a.m33() * v.z + a.m43()); 
     }
     
     inline Matrix4x4 operator/(const Matrix4x4& a, float m)

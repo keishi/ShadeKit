@@ -19,7 +19,7 @@ namespace ShadeKit {
         : m_normal(normal)
         , m_distance(distance)
         {
-            m_uAxis = Vector3(normal.y(), normal.z(), -normal.x());
+            m_uAxis = Vector3(normal.y, normal.z, -normal.x);
             m_vAxis = m_uAxis.cross(normal);
             m_material = new Material();
         }

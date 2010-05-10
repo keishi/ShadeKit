@@ -9,6 +9,7 @@
 
 #include "Test.h"
 #include "Vector3.h"
+#include "Vector4.h"
 #include "Image.h"
 #include "Camera.h"
 #include "Sphere.h"
@@ -36,6 +37,15 @@ namespace ShadeKit {
         assert(v001 == v100.cross(v010));
         printf(":-) PASS %s \n", __func__);
     }
+    void Test::testVector4()
+    {
+        Vector4 v1111(1, 1, 1, 1);
+        Vector4 v1234(1, 2, 3, 4);
+        Vector4 v2345(2, 3, 4, 5);
+        
+        assert(v2345 == v1234 + v1111);
+        printf(":-) PASS %s \n", __func__);
+    }
     void Test::testImage()
     {
         Image image(128, 128);
@@ -51,10 +61,10 @@ namespace ShadeKit {
     void Test::testCamera()
     {
         Camera camera(640, 480);
-        //camera.setLookat(Vector3(0.0, -0.2, 1.0));
+        //camera.setLookat(Vector3(0.0, -0.1, 1.0));
         //camera.setUp(Vector3(0.0, 1.0, 1.0));
         camera.setEye(Vector3(0.0, 1.0, -8.0));
-        //camera.setZNear(3.0);
+        camera.setZNear(0.1);
         //camera.setFOVY(90.0f);
         camera.setRenderShadow(false);
         camera.setRenderReflection(false);
@@ -89,7 +99,7 @@ namespace ShadeKit {
         camera.scene().surfaces()->push_back(&plane);
         
         Material *floorMaterial = new Material();
-        floorMaterial->setColor(kColorBlack);
+        floorMaterial->setColor(kColorWhite);
         Vector3 floorNormal(0.0f, 1.0f, 0.0f);
         Plane floor(floorNormal, 0.0f);
         floor.setMaterial(floorMaterial);
@@ -139,6 +149,7 @@ namespace ShadeKit {
     void Test::runAll()
     {
         testVector3();
+        testVector4();
         testImage();
         testCamera();
     }

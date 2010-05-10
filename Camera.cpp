@@ -57,7 +57,7 @@ namespace ShadeKit {
                 Color lightColor = light->color() * light->intensityAt(hitPosition);
                 Color c = hitMaterial->color() * lightColor * hitMaterial->diffuse() * shade;
                 *acc = *acc + c;
-                /*
+                
                 if (m_renderHighlight) {
                     float viewProjection = ray.direction().dot(hitNormal);
                     Vector3 blinnDirection = lightRay.direction() - ray.direction();
@@ -79,7 +79,7 @@ namespace ShadeKit {
                     raytrace(reflectedRay, &reflectedColor, level + 1);
                     reflectedColor = reflectedColor * hitMaterial->reflectivity();
                     *acc = *acc + reflectedColor;
-                }*/
+                }
             }
          }
         
@@ -97,7 +97,7 @@ namespace ShadeKit {
                 float yPos = (float)y / (float) m_height - 0.5f;
                 Vector3 viewRayV = Vector3(viewPortWidth * xPos, viewPortHeight * yPos, m_zNear);
                 //Vector3 leftDirection = -(m_up.cross(m_lookat).normalize());
-                viewRayV = m_xDirection * viewRayV.x() + m_yDirection * viewRayV.y() + m_zDirection * viewRayV.z();
+                viewRayV = m_xDirection * viewRayV.x + m_yDirection * viewRayV.y + m_zDirection * viewRayV.z;
                 Vector3 viewRayOrigin = viewRayV + m_eye;
                 Ray viewRay;
                 viewRay.setOrigin(viewRayOrigin);
@@ -111,6 +111,7 @@ namespace ShadeKit {
                 }
                 image.setPixelColor(x, y, color);
             }
+            printf("%d/%d\n", y, m_height);
         }
         return image;
     }

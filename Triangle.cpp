@@ -23,12 +23,12 @@ namespace ShadeKit {
         Vector3 v01 = v1 - v0;
         m_normal = v02.cross(v01).normalize();
         
-        Vector3 min = Vector3(MIN(MIN(v0.x(), v1.x()), v2.x()),
-                              MIN(MIN(v0.y(), v1.y()), v2.y()),
-                              MIN(MIN(v0.z(), v1.z()), v2.z()));
-        Vector3 max = Vector3(MAX(MAX(v0.x(), v1.x()), v2.x()),
-                              MAX(MAX(v0.y(), v1.y()), v2.y()),
-                              MAX(MAX(v0.z(), v1.z()), v2.z()));
+        Vector3 min = Vector3(MIN(MIN(v0.x, v1.x), v2.x),
+                              MIN(MIN(v0.y, v1.y), v2.y),
+                              MIN(MIN(v0.z, v1.z), v2.z));
+        Vector3 max = Vector3(MAX(MAX(v0.x, v1.x), v2.x),
+                              MAX(MAX(v0.y, v1.y), v2.y),
+                              MAX(MAX(v0.z, v1.z), v2.z));
         
         m_boundingBox = BoundingBox(min, max);
     }
